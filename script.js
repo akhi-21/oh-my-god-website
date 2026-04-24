@@ -2,6 +2,32 @@ const EMAILJS_PUBLIC_KEY = "yYPz71VQ43yloFVTO";
 const EMAILJS_SERVICE_ID = "service_im2h0ds";
 const EMAILJS_TEMPLATE_ID = "template_yjuqckb"; // use your Contact Us template ID
 
+if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const introSequence = document.querySelector(".intro-sequence");
+  const introContent = document.querySelector(".intro-content");
+
+  if (introSequence && introContent) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: introSequence,
+        start: "top top",
+        end: "+=1500",
+        pin: true,
+        scrub: 1,
+      }
+    });
+
+    tl.to(introContent, {
+      scale: 80,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.inOut"
+    });
+  }
+}
+
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
 const navLinks = document.querySelectorAll(".nav-menu a");
