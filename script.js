@@ -1,31 +1,9 @@
-const EMAILJS_PUBLIC_KEY = "yYPz71VQ43yloFVTO";
-const EMAILJS_SERVICE_ID = "service_im2h0ds";
-const EMAILJS_TEMPLATE_ID = "template_yjuqckb"; // use your Contact Us template ID
+const EMAILJS_PUBLIC_KEY = "edOVaRsSVkvpQ_48N";
+const EMAILJS_SERVICE_ID = "service_ps35w5d";
+const EMAILJS_TEMPLATE_ID = "template_sdm3il7"; // use your Contact Us template ID
 
-if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-
-  const introSequence = document.querySelector(".intro-sequence");
-  const introContent = document.querySelector(".intro-content");
-
-  if (introSequence && introContent) {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: introSequence,
-        start: "top top",
-        end: "+=1500",
-        pin: true,
-        scrub: 1,
-      }
-    });
-
-    tl.to(introContent, {
-      scale: 80,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.inOut"
-    });
-  }
+if (typeof emailjs !== "undefined") {
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 }
 
 const navToggle = document.querySelector(".nav-toggle");
@@ -74,11 +52,6 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-if (window.emailjs) {
-  window.emailjs.init({
-    publicKey: EMAILJS_PUBLIC_KEY
-  });
-}
 
 const validators = {
   name: (value) => value.trim().length >= 2 || "Please enter your name.",
